@@ -11,7 +11,6 @@ El archivo tiene tres partes con responsabilidades separadas:
 """
 
 from collections import deque
-from dataclasses import dataclass
 from datetime import datetime
 
 SERVICE_TYPES = ("deposito", "retiro", "gestion_cuenta")
@@ -20,12 +19,18 @@ SERVICE_TYPES = ("deposito", "retiro", "gestion_cuenta")
 # ---------------------------------------------------------------------------
 # 1. Datos
 # ---------------------------------------------------------------------------
-@dataclass
 class Ticket:
-    number: int
-    client_name: str
-    service_type: str
-    issued_at: datetime
+    def __init__(self, number, client_name, service_type, issued_at):
+        self.number = number  # int, secuencial y global
+        self.client_name = client_name  # str
+        self.service_type = service_type  # "deposito" | "retiro" | "gestion_cuenta"
+        self.issued_at = issued_at  # datetime del momento de llegada
+
+    def __repr__(self):
+        return (
+            f"Ticket(number={self.number!r}, client_name={self.client_name!r}, "
+            f"service_type={self.service_type!r}, issued_at={self.issued_at!r})"
+        )
 
     def __str__(self):
         hora = self.issued_at.strftime("%H:%M:%S")

@@ -56,7 +56,7 @@ para rellenar el hueco, así que se vuelve lento con muchos datos.
 
 | Decisión | Motivo |
 |---|---|
-| `Ticket` como `dataclass` | Es una clase que solo guarda datos; Python escribe el constructor por ti. |
+| `Ticket` como clase normal, sin `dataclass` | Al principio usé `dataclass`, un atajo que escribe el constructor por ti. Pero el enunciado dice "únicamente `collections.deque` y `datetime`", así que escribí el constructor (`__init__`) a mano. El comportamiento es el mismo. |
 | Un único contador global de tickets | El enunciado pide números secuenciales entre *todos* los servicios. |
 | Validar el servicio **antes** de gastar un número | Si un ticket falla, el siguiente no debe saltarse un número. Hay un test para esto. |
 | `call_next` con cola vacía lanza `IndexError` | El enunciado pide un error descriptivo. `IndexError` es lo que Python usa al sacar de algo vacío. |
@@ -111,7 +111,9 @@ atender al mismo cliente. La solución es que leer y retirar sean **un solo paso
 - **Cola FIFO:** el primero en llegar es el primero en salir.
 - **O(1) y O(n):** cuánto crece el tiempo de una operación al crecer los datos.
   O(1) = siempre igual; O(n) = crece con la cantidad de datos.
-- **Dataclass:** clase pensada solo para guardar datos.
+- **Dataclass:** atajo de Python para clases que solo guardan datos (escribe el
+  constructor por ti). Aquí no lo usamos para cumplir la restricción del
+  enunciado, y `Ticket` tiene su `__init__` escrito a mano.
 - **Caso borde:** situación poco habitual (cola vacía, dato inválido) que hay
   que contemplar.
 - **Test unitario:** código que comprueba automáticamente que otro código

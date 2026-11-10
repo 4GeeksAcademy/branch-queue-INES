@@ -67,6 +67,6 @@ servicio.
 
 ## Restricciones
 
-Solo biblioteca estándar de Python (`collections`, `datetime`, `dataclasses`,
-`unittest`). Sin paquetes externos. No incluye persistencia, autenticación ni
+Solo biblioteca estándar de Python: la lógica usa únicamente `collections.deque`
+y `datetime`; los tests usan `unittest`. Sin paquetes externos. No incluye persistencia, autenticación ni
 asignación de agentes.

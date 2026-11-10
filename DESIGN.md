@@ -78,7 +78,6 @@ una acción a la vez, así que esta carrera no puede ocurrir hoy.
 
 ## Nota sobre dependencias
 
-Solo se usa la biblioteca estándar de Python: `collections.deque` y `datetime`
-para la lógica, más `dataclasses` para `Ticket` (el enunciado permite "clase o
-dataclass"). Los tests usan `unittest`, también de la biblioteca estándar. No
-hay paquetes externos.
+Para la lógica solo se usan `collections.deque` y `datetime`, tal como exige el
+enunciado. `Ticket` es una clase normal (sin `dataclasses`). Los tests usan
+`unittest`, que también es de la biblioteca estándar. No hay paquetes externos.
